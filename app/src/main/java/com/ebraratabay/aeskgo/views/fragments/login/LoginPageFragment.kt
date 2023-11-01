@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.ebraratabay.aeskgo.R
+import com.ebraratabay.aeskgo.viewmodels.LoginPageViewModel
 
 class LoginPageFragment : Fragment() {
 

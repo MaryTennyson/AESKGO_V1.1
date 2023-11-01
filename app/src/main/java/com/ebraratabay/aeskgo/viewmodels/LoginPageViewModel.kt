@@ -1,4 +1,4 @@
-package com.ebraratabay.aeskgo.views.fragments.login
+package com.ebraratabay.aeskgo.viewmodels
 
 import androidx.lifecycle.ViewModel
 
