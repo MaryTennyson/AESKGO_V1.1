@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">AESKGO</string>
     <string name="EnterYourEmailandPasswordDefinition">E-posta adresinizi ve şifrenizi girin</string>
-    <string name="EmailDefinition">Sadece yildiz.edu.tr uzantılı mail adresinizi  ekleyin</string>
+    <string name="EmailDefinition">Sadece yildiz.edu.tr uzantılı mail adresinizi ekleyin</string>
     <string name="email">ad@std.yildiz.edu.tr</string>
+    <string name="go_on">Devam Edin</string>
+    <string name="password">şifre</string>
 </resources>
