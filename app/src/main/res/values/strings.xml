@@ -1,8 +1,13 @@
 <resources>
     <string name="app_name">AESKGO</string>
-    <string name="EnterYourEmailandPasswordDefinition">E-posta adresinizi ve şifrenizi girin</string>
-    <string name="EmailDefinition">Sadece yildiz.edu.tr uzantılı mail adresinizi ekleyin</string>
+    <string name="EnterYourEmailandPasswordDefinition" translatable="false">E-posta adresinizi ve şifrenizi girin</string>
+    <string name="EmailDefinition" translatable="false">Sadece yildiz.edu.tr uzantılı mail adresinizi ekleyin</string>
     <string name="email">ad@std.yildiz.edu.tr</string>
-    <string name="go_on">Devam Edin</string>
-    <string name="password">şifre</string>
+    <string name="password" translatable="false">şifre</string>
+    <string name="continuetoprocess">Devam Edin</string>
+    <string name="name">ad</string>
+    <string name="surname">soyad</string>
+    <string name="createyouraccount">Profilinizi oluşturun</string>
+    <string name="creatingaccountdefiniton">Ad ve Soyadınızı sonradan değiştirilmemektedir</string>
+
 </resources>
