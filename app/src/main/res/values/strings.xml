@@ -9,5 +9,7 @@
     <string name="surname">soyad</string>
     <string name="createyouraccount">Profilinizi oluşturun</string>
     <string name="creatingaccountdefiniton">Ad ve Soyadınızı sonradan değiştirilmemektedir</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
