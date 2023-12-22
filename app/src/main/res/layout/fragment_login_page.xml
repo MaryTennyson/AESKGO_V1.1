@@ -8,76 +8,76 @@
     tools:context=".views.fragments.login.LoginPageFragment">
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="26dp"
+        android:layout_marginRight="26dp"
+        android:gravity="center"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <TextView
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/EnterYourEmailandPasswordDefinition"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="12dp"
-                android:layout_marginBottom="16dp"
-                android:text="@string/EnterYourEmailandPasswordDefinition"
-                android:textColor="#000000"
-                android:textSize="20sp"
-                android:textStyle="bold" />
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginBottom="32dp"
+            android:text="@string/EmailDefinition"
+            android:textSize="16sp" />
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="12dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="40dp"
-                android:text="@string/EmailDefinition"
-                android:textSize="16sp" />
-
-            <EditText
-                android:id="@+id/editTextTextPersonName"
-                android:layout_width="340dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/plaintext_background"
-                android:ems="10"
-                android:hint="@string/email"
-                android:inputType="textPersonName"
-                android:paddingLeft="12dp"
-                android:paddingTop="12dp"
-                android:paddingRight="4dp"
-                android:paddingBottom="12dp" />
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/plaintext_background"
+            android:ems="10"
+            android:hint="@string/email"
+            android:inputType="textPersonName"
+            android:paddingLeft="12dp"
+            android:paddingTop="12dp"
+            android:paddingRight="4dp"
+            android:paddingBottom="12dp" />
 
 
-            <EditText
-                android:id="@+id/editTextTextPersonName2"
-                android:layout_width="340dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="40dp"
-                android:background="@drawable/plaintext_background"
-                android:ems="10"
-                android:hint="@string/password"
-                android:inputType="textPersonName"
-                android:paddingLeft="12dp"
-                android:paddingTop="12dp"
-                android:paddingRight="4dp"
-                android:paddingBottom="12dp" />
+        <EditText
+            android:id="@+id/editTextTextPersonName2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/plaintext_background"
+            android:ems="10"
+            android:hint="@string/password"
+            android:inputType="textPersonName"
+            android:paddingLeft="12dp"
+            android:paddingTop="12dp"
+            android:paddingRight="4dp"
+            android:paddingBottom="12dp" />
 
 
+        <Button
+            android:id="@+id/continueButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:clickable="true"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:text="@string/continuetoprocess" />
 
-            <Button
-                android:id="@+id/continueButton"
-                android:layout_width="340dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:clickable="true"
-                android:paddingTop="12dp"
-                android:paddingBottom="12dp"
-                android:text="@string/continuetoprocess" />
-
-        </LinearLayout>
+    </LinearLayout>
 
 </FrameLayout>

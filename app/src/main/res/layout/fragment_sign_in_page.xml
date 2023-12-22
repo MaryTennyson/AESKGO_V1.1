@@ -9,6 +9,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="26dp"
+        android:layout_marginRight="26dp"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -36,7 +38,7 @@
 
         <EditText
             android:id="@+id/editTextTextPersonName"
-            android:layout_width="340dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:background="@drawable/plaintext_background"
@@ -50,7 +52,7 @@
 
         <EditText
             android:id="@+id/editTextTextPersonName2"
-            android:layout_width="340dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
             android:background="@drawable/plaintext_background"
@@ -63,11 +65,9 @@
             android:paddingBottom="12dp" />
 
 
-
-
         <Button
             android:id="@+id/button2"
-            android:layout_width="340dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:paddingTop="12dp"

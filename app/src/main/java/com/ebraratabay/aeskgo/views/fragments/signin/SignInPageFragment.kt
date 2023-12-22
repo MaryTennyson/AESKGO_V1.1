@@ -1,13 +1,19 @@
 package com.ebraratabay.aeskgo.views.fragments.signin
 
+import android.content.Intent
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import com.ebraratabay.aeskgo.R
+import com.ebraratabay.aeskgo.databinding.FragmentLoginPageBinding
+import com.ebraratabay.aeskgo.databinding.FragmentSignInPageBinding
+import com.ebraratabay.aeskgo.viewmodels.LoginPageViewModel
 import com.ebraratabay.aeskgo.viewmodels.SignInPageViewModel
+import com.ebraratabay.aeskgo.views.activities.MainActivity
 
 class SignInPageFragment : Fragment() {
 
@@ -16,12 +22,20 @@ class SignInPageFragment : Fragment() {
     }
 
     private lateinit var viewModel: SignInPageViewModel
-
+    private var _binding: FragmentSignInPageBinding? = null
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_sign_in_page, container, false)
+        _binding = FragmentSignInPageBinding.inflate(inflater, container, false)
+        val view = binding.root
+        binding.button2.setOnClickListener {
+
+           val intent= Intent(this.context, MainActivity::class.java)
+           startActivity(intent)
+        }
+        return view
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
