@@ -5,31 +5,44 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.ebraratabay.aeskgo.R
+import com.ebraratabay.aeskgo.adapters.VehicleListAdapter
+import com.ebraratabay.aeskgo.databinding.ActivityMainBinding
+import com.ebraratabay.aeskgo.databinding.FragmentLoginPageBinding
+import com.ebraratabay.aeskgo.databinding.FragmentMainPageBinding
+import com.ebraratabay.aeskgo.models.Vehicle
+import com.ebraratabay.aeskgo.viewmodels.LoginPageViewModel
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [MainPageFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class MainPageFragment : Fragment() {
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private lateinit var viewModel: FragmentMainPageBinding
+    private var _binding: FragmentMainPageBinding? = null
+    private val binding get() = _binding!!
+    private val  vehicleAdapter= VehicleListAdapter(arrayListOf())
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_main_page, container, false)
+        _binding = FragmentMainPageBinding.inflate(inflater, container, false)
+        val view = binding.root
+
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.vehicleRecyclerView.layoutManager=LinearLayoutManager(activity)
+        binding.vehicleRecyclerView.adapter= vehicleAdapter
+       val vehicle1= Vehicle("Arabam1", "Var bir açıklması", R.drawable.eletra)
+        val vehicle2= Vehicle("Arabam2", "Var bir açıklması", R.drawable.eletra)
+        var vehicleList= ArrayList<Vehicle>()
+        vehicleList.add(vehicle1)
+        vehicleList.add(vehicle2)
+        vehicleAdapter.updateVehicleList(vehicleList)
     }
 
 

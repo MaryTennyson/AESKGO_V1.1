@@ -25,4 +25,9 @@ val binding= VehicleCardBinding.inflate(LayoutInflater.from(parent.context),pare
         holder.binding.imageCardView.setImageResource(vehicleList.get(position).imageID)
 
     }
+    fun updateVehicleList(newAdvertList: List<Vehicle>) {
+        vehicleList.clear()
+        vehicleList.addAll(newAdvertList)
+        notifyDataSetChanged()
+    }
 }
