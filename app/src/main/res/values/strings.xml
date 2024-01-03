@@ -13,5 +13,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="SelectYourVehicle">Aracınızı Seçiniz</string>
     <string name="YouCanStartWithSelectedVehicled">Seçtiğiniz araç ile yolculuğa başlayabilirsiniz</string>
+    <string name="sign_in">Giriş Yap</string>
+    <string name="sign_up">Üye Ol</string>
 
 </resources>

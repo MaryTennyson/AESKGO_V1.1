@@ -39,7 +39,7 @@
             android:textSize="16sp" />
 
         <EditText
-            android:id="@+id/editTextTextPersonName"
+            android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
@@ -54,7 +54,7 @@
 
 
         <EditText
-            android:id="@+id/editTextTextPersonName2"
+            android:id="@+id/passwordEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="32dp"
@@ -68,15 +68,37 @@
             android:paddingBottom="12dp" />
 
 
-        <Button
-            android:id="@+id/continueButton"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:clickable="true"
-            android:paddingTop="12dp"
-            android:paddingBottom="12dp"
-            android:text="@string/continuetoprocess" />
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/signinButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginRight="16dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:text="@string/sign_in" />
+
+            <Button
+                android:id="@+id/signupButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="16dp"
+                android:layout_weight="1"
+                android:clickable="true"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp"
+                android:text="@string/sign_up" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

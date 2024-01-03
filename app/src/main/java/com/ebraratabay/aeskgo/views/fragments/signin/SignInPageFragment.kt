@@ -7,11 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.Navigation
-import com.ebraratabay.aeskgo.R
-import com.ebraratabay.aeskgo.databinding.FragmentLoginPageBinding
 import com.ebraratabay.aeskgo.databinding.FragmentSignInPageBinding
-import com.ebraratabay.aeskgo.viewmodels.LoginPageViewModel
 import com.ebraratabay.aeskgo.viewmodels.SignInPageViewModel
 import com.ebraratabay.aeskgo.views.activities.MainActivity
 
