@@ -17,7 +17,7 @@ class FirebaseAuthService {
         data class Failure(val errorMessage: String) : AuthResult()
     }
 
-    fun createNewUser(email: String, password: String) :AuthEnumClass  {
+   suspend fun createNewUser(email: String, password: String) :AuthEnumClass  {
         try {
             val user= auth.createUserWithEmailAndPassword(email,password)
             if(user.isSuccessful){

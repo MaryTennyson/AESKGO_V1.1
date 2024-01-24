@@ -15,5 +15,6 @@
     <string name="YouCanStartWithSelectedVehicled">Seçtiğiniz araç ile yolculuğa başlayabilirsiniz</string>
     <string name="sign_in">Giriş Yap</string>
     <string name="sign_up">Üye Ol</string>
+    <string name="title_activity_maps">MapsActivity</string>
 
 </resources>
