@@ -4,3 +4,6 @@ enum class AuthEnumClass{
    onSuccess,
    onFailuare,
 }
+// data/model/Result.kt
+
+
