@@ -15,6 +15,7 @@ class FirebaseAuthService @Inject constructor(var firebaseAuth: FirebaseAuth) {
      fun createNewUser(email: String, password: String): Flow<AuthResults> = flow {
         try {
             val authResult = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
+            authResult.user
             emit(AuthResults.Success(authResult))
         } catch (e: FirebaseException) {
             emit(AuthResults.Failure(e))

@@ -4,7 +4,7 @@ plugins {
     id("com.google.gms.google-services")
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
     id 'kotlin-kapt'
-    id 'com.google.dagger.hilt.android' version '2.41' apply false
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -70,7 +70,6 @@ dependencies {
 
     //LifeCycle
     implementation "android.arch.lifecycle:extensions:1.1.1"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.4.0"
 
     //Coroutines

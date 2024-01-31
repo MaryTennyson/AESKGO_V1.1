@@ -1,4 +1,4 @@
 package com.ebraratabay.aeskgo.models
 
-class User(val email:String) {
+class LoginUser(val email:String, val password:String) {
 }

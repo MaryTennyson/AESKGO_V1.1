@@ -7,11 +7,11 @@
         <deviceKey>
           <Key>
             <type value="VIRTUAL_DEVICE_PATH" />
-            <value value="C:\Users\Ebrar\.android\avd\NewEmulator.avd" />
+            <value value="C:\Users\Ebrar\.android\avd\New_Flutter_Bender.avd" />
           </Key>
         </deviceKey>
       </Target>
     </targetSelectedWithDropDown>
-    <timeTargetWasSelectedWithDropDown value="2024-01-03T11:40:21.451583300Z" />
+    <timeTargetWasSelectedWithDropDown value="2024-01-31T22:08:18.655004900Z" />
   </component>
 </project>
