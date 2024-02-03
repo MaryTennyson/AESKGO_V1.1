@@ -1,12 +1,12 @@
 package com.ebraratabay.aeskgo.views.fragments.signin
 
 import android.content.Intent
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.ebraratabay.aeskgo.databinding.FragmentSignInPageBinding
 import com.ebraratabay.aeskgo.viewmodels.SignInPageViewModel
 import com.ebraratabay.aeskgo.views.activities.MainActivity
@@ -28,8 +28,8 @@ class SignInPageFragment : Fragment() {
         val view = binding.root
         binding.button2.setOnClickListener {
 
-           val intent= Intent(this.context, MainActivity::class.java)
-           startActivity(intent)
+            val intent = Intent(this.context, MainActivity::class.java)
+            startActivity(intent)
         }
         return view
     }

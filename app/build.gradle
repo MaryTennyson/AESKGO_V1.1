@@ -67,6 +67,9 @@ dependencies {
     //Firebase Auth
     implementation 'com.firebaseui:firebase-ui-auth:7.2.0'
 
+    //Firebase Store
+    implementation 'com.google.firebase:firebase-firestore:24.10.1'
+
 
     //LifeCycle
     implementation "android.arch.lifecycle:extensions:1.1.1"

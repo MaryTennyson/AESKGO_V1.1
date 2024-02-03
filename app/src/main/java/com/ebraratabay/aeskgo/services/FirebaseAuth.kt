@@ -10,13 +10,12 @@ import kotlinx.coroutines.tasks.await
 import javax.inject.Inject
 
 
-class FirebaseAuthService @Inject constructor(var firebaseAuth: FirebaseAuth) {
+class FirebaseAuthService @Inject constructor(val firebaseAuth: FirebaseAuth) {
 
      fun createNewUser(email: String, password: String): Flow<AuthResults> = flow {
         try {
-            val authResult = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
-            authResult.user
-            emit(AuthResults.Success(authResult))
+            val newUserResult = firebaseAuth.createUserWithEmailAndPassword(email, password).await()
+            emit(AuthResults.Success(newUserResult.user!!.uid))
         } catch (e: FirebaseException) {
             emit(AuthResults.Failure(e))
         }
@@ -26,9 +25,8 @@ class FirebaseAuthService @Inject constructor(var firebaseAuth: FirebaseAuth) {
      fun signInUser(email: String, password: String): Flow<AuthResults> = flow {
 
         try {
-            val user = firebaseAuth.signInWithEmailAndPassword(email, password).await()
-
-            emit(AuthResults.Success(user))
+            val signInResult = firebaseAuth.signInWithEmailAndPassword(email, password).await()
+            emit(AuthResults.Success(signInResult.user!!.uid))
 
         } catch (e: FirebaseException) {
             emit(AuthResults.Failure(e))

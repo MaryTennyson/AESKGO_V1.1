@@ -20,6 +20,7 @@ import com.ebraratabay.aeskgo.views.activities.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
+
 @AndroidEntryPoint
 class LoginPageFragment : Fragment() {
 
@@ -30,6 +31,7 @@ class LoginPageFragment : Fragment() {
     private lateinit var viewModel: LoginPageViewModel
     private var _binding: FragmentLoginPageBinding? = null
     private val binding get() = _binding!!
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -52,6 +54,7 @@ class LoginPageFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(LoginPageViewModel::class.java)
+
     }
 
     fun getUserFromEditText(): LoginUser {
@@ -65,10 +68,10 @@ class LoginPageFragment : Fragment() {
         viewModel.signInButton(user)
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
-
                 viewModel.authState.collect {
                     when (it) {
                         is AuthResults.Success -> {
+                            viewModel.editUserID("user_ID", it.value.toString())
                             var intent = Intent(context, MainActivity::class.java)
                             startActivity(intent)
                         }
@@ -87,7 +90,6 @@ class LoginPageFragment : Fragment() {
     }
 
     fun signUpButtonClicked() {
-
         val user = getUserFromEditText()
         viewModel.signUpButton(user)
         viewLifecycleOwner.lifecycleScope.launch {
@@ -95,6 +97,8 @@ class LoginPageFragment : Fragment() {
                 viewModel.authState.collect {
                     when (it) {
                         is AuthResults.Success -> {
+                            viewModel.editUserID("user_ID", it.value.toString())
+                            println("signInButtonClicked ${it.value}")
                             val action = R.id.action_loginPageFragment_to_signInPageFragment
                             Navigation.findNavController(binding.root).navigate(action)
 
@@ -113,6 +117,7 @@ class LoginPageFragment : Fragment() {
         }
 
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
