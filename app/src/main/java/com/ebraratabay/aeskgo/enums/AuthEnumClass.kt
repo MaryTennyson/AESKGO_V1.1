@@ -12,6 +12,8 @@ sealed class AuthResults {
     object Loading : AuthResults()
 
 }
+
+
 // data/model/Result.kt
 
 

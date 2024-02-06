@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.ebraratabay.aeskgo.databinding.FragmentSignInPageBinding
+import com.ebraratabay.aeskgo.models.FirebaseAuthUser
+import com.ebraratabay.aeskgo.models.FirebaseStoreAuth
 import com.ebraratabay.aeskgo.viewmodels.SignInPageViewModel
 import com.ebraratabay.aeskgo.views.activities.MainActivity
 
@@ -26,10 +28,8 @@ class SignInPageFragment : Fragment() {
     ): View? {
         _binding = FragmentSignInPageBinding.inflate(inflater, container, false)
         val view = binding.root
-        binding.button2.setOnClickListener {
+        binding.continueButton.setOnClickListener {
 
-            val intent = Intent(this.context, MainActivity::class.java)
-            startActivity(intent)
         }
         return view
     }
@@ -37,7 +37,14 @@ class SignInPageFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(SignInPageViewModel::class.java)
-        // TODO: Use the ViewModel
+
+    }
+
+    fun getUserFromEditText(): FirebaseStoreAuth {
+        val name = binding.userName.text.toString()
+        val surname = binding.userSurname.text.toString()
+        val phoneNumber= binding.userPhoneNumber.toString()
+        return FirebaseStoreAuth(name, surname, phoneNumber)
     }
 
 }

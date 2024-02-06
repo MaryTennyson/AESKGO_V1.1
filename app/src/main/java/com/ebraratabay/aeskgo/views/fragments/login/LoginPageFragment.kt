@@ -14,7 +14,7 @@ import androidx.navigation.Navigation
 import com.ebraratabay.aeskgo.R
 import com.ebraratabay.aeskgo.databinding.FragmentLoginPageBinding
 import com.ebraratabay.aeskgo.enums.AuthResults
-import com.ebraratabay.aeskgo.models.LoginUser
+import com.ebraratabay.aeskgo.models.FirebaseAuthUser
 import com.ebraratabay.aeskgo.viewmodels.LoginPageViewModel
 import com.ebraratabay.aeskgo.views.activities.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -57,10 +57,10 @@ class LoginPageFragment : Fragment() {
 
     }
 
-    fun getUserFromEditText(): LoginUser {
+    fun getUserFromEditText(): FirebaseAuthUser {
         val email = binding.emailEditText.text.toString()
         val password = binding.passwordEditText.text.toString()
-        return LoginUser(email, password)
+        return FirebaseAuthUser(email, password)
     }
 
     fun signInButtonClicked() {
