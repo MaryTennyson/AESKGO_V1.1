@@ -12,7 +12,9 @@ import com.ebraratabay.aeskgo.models.FirebaseAuthUser
 import com.ebraratabay.aeskgo.models.FirebaseStoreAuth
 import com.ebraratabay.aeskgo.viewmodels.SignInPageViewModel
 import com.ebraratabay.aeskgo.views.activities.MainActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SignInPageFragment : Fragment() {
 
     companion object {
@@ -29,7 +31,7 @@ class SignInPageFragment : Fragment() {
         _binding = FragmentSignInPageBinding.inflate(inflater, container, false)
         val view = binding.root
         binding.continueButton.setOnClickListener {
-
+          continueButtonClicked()
         }
         return view
     }
@@ -37,6 +39,12 @@ class SignInPageFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(SignInPageViewModel::class.java)
+
+    }
+
+    fun continueButtonClicked(){
+        val user= getUserFromEditText()
+        viewModel.continueButtonClicked(user)
 
     }
 
