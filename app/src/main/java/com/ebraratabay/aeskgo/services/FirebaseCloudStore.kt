@@ -1,7 +1,8 @@
 package com.ebraratabay.aeskgo.services
 
 import com.ebraratabay.aeskgo.enums.AuthResults
-import com.ebraratabay.aeskgo.models.FirebaseStoreAuth
+
+import com.ebraratabay.aeskgo.models.FirebaseStoreUser
 import com.ebraratabay.aeskgo.models.Vehicle
 import com.google.firebase.FirebaseException
 import com.google.firebase.firestore.FirebaseFirestore
@@ -15,7 +16,7 @@ class FirebaseCloudStore @Inject constructor(val firestore: FirebaseFirestore) {
     var vehicleList: ArrayList<Vehicle> = arrayListOf()
 
 
-    fun setUser(userID: String, user: FirebaseStoreAuth): Flow<AuthResults> = flow {
+    fun setUser(userID: String, user: FirebaseStoreUser): Flow<AuthResults> = flow {
         firebaseUser["name"] = user.name
         firebaseUser["surname"] = user.surname
         firebaseUser["phone_number"] = user.phoneNumber
@@ -33,7 +34,7 @@ class FirebaseCloudStore @Inject constructor(val firestore: FirebaseFirestore) {
         try {
             val user = firestore.collection("Users").document(userID).get().await()
             if (user != null) {
-                val userInfo = user.toObject(FirebaseStoreAuth::class.java) ?: FirebaseStoreAuth()
+                val userInfo = user.toObject(FirebaseStoreUser::class.java) ?: FirebaseStoreUser()
                 emit(AuthResults.Success(userInfo))
             } else {
                 emit(AuthResults.Failure(Exception("User Can Not Found")))

@@ -13,7 +13,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.Navigation
 import com.ebraratabay.aeskgo.R
 import com.ebraratabay.aeskgo.databinding.FragmentLoginPageBinding
-import com.ebraratabay.aeskgo.enums.AuthResults
+import com.ebraratabay.aeskgo.enums.AuthResults.*
 import com.ebraratabay.aeskgo.models.FirebaseAuthUser
 import com.ebraratabay.aeskgo.viewmodels.LoginPageViewModel
 import com.ebraratabay.aeskgo.views.activities.MainActivity
@@ -70,16 +70,16 @@ class LoginPageFragment : Fragment() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.authState.collect {
                     when (it) {
-                        is AuthResults.Success -> {
+                        is Success -> {
                             viewModel.editUserID("user_ID", it.value.toString())
                             var intent = Intent(context, MainActivity::class.java)
                             startActivity(intent)
                         }
-                        is AuthResults.Failure -> {
+                        is Failure -> {
 
 
                         }
-                        is AuthResults.Loading -> {
+                        is Loading -> {
 
 
                         }
@@ -96,18 +96,18 @@ class LoginPageFragment : Fragment() {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.authState.collect {
                     when (it) {
-                        is AuthResults.Success -> {
+                        is Success -> {
                             viewModel.editUserID("user_ID", it.value.toString())
                             println("signInButtonClicked ${it.value}")
                             val action = R.id.action_loginPageFragment_to_signInPageFragment
                             Navigation.findNavController(binding.root).navigate(action)
 
                         }
-                        is AuthResults.Failure -> {
+                        is Failure -> {
 
 
                         }
-                        is AuthResults.Loading -> {
+                        is Loading -> {
 
 
                         }

@@ -1,18 +1,17 @@
 package com.ebraratabay.aeskgo.views.fragments.signin
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.ebraratabay.aeskgo.databinding.FragmentSignInPageBinding
-import com.ebraratabay.aeskgo.models.FirebaseAuthUser
-import com.ebraratabay.aeskgo.models.FirebaseStoreAuth
+import com.ebraratabay.aeskgo.models.FirebaseStoreUser
 import com.ebraratabay.aeskgo.viewmodels.SignInPageViewModel
-import com.ebraratabay.aeskgo.views.activities.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SignInPageFragment : Fragment() {
@@ -31,7 +30,7 @@ class SignInPageFragment : Fragment() {
         _binding = FragmentSignInPageBinding.inflate(inflater, container, false)
         val view = binding.root
         binding.continueButton.setOnClickListener {
-          continueButtonClicked()
+            continueButtonClicked()
         }
         return view
     }
@@ -46,13 +45,15 @@ class SignInPageFragment : Fragment() {
         val user= getUserFromEditText()
         viewModel.continueButtonClicked(user)
 
+
+
     }
 
-    fun getUserFromEditText(): FirebaseStoreAuth {
+    fun getUserFromEditText(): FirebaseStoreUser {
         val name = binding.userName.text.toString()
         val surname = binding.userSurname.text.toString()
-        val phoneNumber= binding.userPhoneNumber.toString()
-        return FirebaseStoreAuth(name, surname, phoneNumber)
+        val phoneNumber = binding.userPhoneNumber.toString()
+        return FirebaseStoreUser(name, surname, phoneNumber)
     }
 
 }
