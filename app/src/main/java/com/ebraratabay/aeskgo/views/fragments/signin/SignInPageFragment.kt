@@ -1,15 +1,20 @@
 package com.ebraratabay.aeskgo.views.fragments.signin
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.ebraratabay.aeskgo.databinding.FragmentSignInPageBinding
+import com.ebraratabay.aeskgo.enums.AuthResults
 import com.ebraratabay.aeskgo.models.FirebaseStoreUser
 import com.ebraratabay.aeskgo.viewmodels.SignInPageViewModel
+import com.ebraratabay.aeskgo.views.activities.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -41,10 +46,29 @@ class SignInPageFragment : Fragment() {
 
     }
 
-    fun continueButtonClicked(){
-        val user= getUserFromEditText()
-        viewModel.continueButtonClicked(user)
+    fun continueButtonClicked() {
+        val user = getUserFromEditText()
 
+        viewModel.continueButtonClicked(user)
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.storeState.collect {
+                    when (it) {
+                        is AuthResults.Success -> {
+
+                            var intent = Intent(context, MainActivity::class.java)
+                            startActivity(intent)
+                        }
+                        is AuthResults.Failure -> {
+
+                        }
+                        is AuthResults.Loading -> {
+
+                        }
+                    }
+                }
+            }
+        }
 
 
     }

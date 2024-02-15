@@ -15,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class LoginPageViewModel @Inject constructor(
     val firebaseAuthRepo: FirebaseAuthRepository,
-    val sharedPreferencesService: SharedPreferencesService
+
 ) :
     ViewModel() {
 
@@ -54,6 +54,6 @@ class LoginPageViewModel @Inject constructor(
     }
 
     fun editUserID(dataKey: String, userID: String) {
-        sharedPreferencesService.editStringFromSP(dataKey, userID)
+       SharedPreferencesService()
     }
 }

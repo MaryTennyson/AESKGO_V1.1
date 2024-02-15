@@ -15,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class SignInPageViewModel @Inject constructor(
     val firestore: FirebaseCloudStore,
-    val sharedPreferencesService: SharedPreferencesService
+
 ) :
     ViewModel() {
 
@@ -25,14 +25,18 @@ class SignInPageViewModel @Inject constructor(
 
     fun continueButtonClicked(user: FirebaseStoreUser) {
         val userID = getUserID()
-  viewModelScope.launch {
-      firestore.setUser(userID, user)
-  }
+        viewModelScope.launch {
+            firestore.setUser(userID, user).collect {
+                if (it != null) {
+                    _storeState.value = it
+                }
+            }
+        }
 
     }
 
     fun getUserID(): String {
-        return sharedPreferencesService.getStringFromSP("user_ID")!!
+        return SharedPreferencesService("user_ID", )
     }
 
 

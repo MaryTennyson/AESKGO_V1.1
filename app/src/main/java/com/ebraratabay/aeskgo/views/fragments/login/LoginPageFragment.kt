@@ -91,7 +91,7 @@ class LoginPageFragment : Fragment() {
 
     fun signUpButtonClicked() {
         val user = getUserFromEditText()
-        viewModel.signUpButton(user)
+        viewModel.signUpUser(user)
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.authState.collect {
