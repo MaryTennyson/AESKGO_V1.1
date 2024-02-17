@@ -4,7 +4,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ebraratabay.aeskgo.enums.AuthResults
 import com.ebraratabay.aeskgo.models.FirebaseAuthUser
-import com.ebraratabay.aeskgo.services.SharedPreferencesService
 import com.ebraratabay.aeskgo.services.repository.FirebaseAuthRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -16,7 +15,7 @@ import javax.inject.Inject
 class LoginPageViewModel @Inject constructor(
     val firebaseAuthRepo: FirebaseAuthRepository,
 
-) :
+    ) :
     ViewModel() {
 
     val _authState = MutableStateFlow<AuthResults>(AuthResults.Loading)
@@ -53,7 +52,5 @@ class LoginPageViewModel @Inject constructor(
         }
     }
 
-    fun editUserID(dataKey: String, userID: String) {
-       SharedPreferencesService()
-    }
+
 }

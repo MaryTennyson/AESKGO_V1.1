@@ -1,5 +1,6 @@
 package com.ebraratabay.aeskgo.views.fragments.login
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,6 +16,7 @@ import com.ebraratabay.aeskgo.R
 import com.ebraratabay.aeskgo.databinding.FragmentLoginPageBinding
 import com.ebraratabay.aeskgo.enums.AuthResults.*
 import com.ebraratabay.aeskgo.models.FirebaseAuthUser
+import com.ebraratabay.aeskgo.services.SharedPreferencesService
 import com.ebraratabay.aeskgo.viewmodels.LoginPageViewModel
 import com.ebraratabay.aeskgo.views.activities.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,6 +33,7 @@ class LoginPageFragment : Fragment() {
     private lateinit var viewModel: LoginPageViewModel
     private var _binding: FragmentLoginPageBinding? = null
     private val binding get() = _binding!!
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -55,6 +58,7 @@ class LoginPageFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(LoginPageViewModel::class.java)
 
+
     }
 
     fun getUserFromEditText(): FirebaseAuthUser {
@@ -65,13 +69,14 @@ class LoginPageFragment : Fragment() {
 
     fun signInButtonClicked() {
         val user = getUserFromEditText()
-        viewModel.signInButton(user)
+        viewModel.signInUser(user)
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.authState.collect {
                     when (it) {
                         is Success -> {
-                            viewModel.editUserID("user_ID", it.value.toString())
+                            editUserID(it.value.toString())
+                          //  viewModel.editUserID("user_ID", it.value.toString())
                             var intent = Intent(context, MainActivity::class.java)
                             startActivity(intent)
                         }
@@ -97,7 +102,9 @@ class LoginPageFragment : Fragment() {
                 viewModel.authState.collect {
                     when (it) {
                         is Success -> {
-                            viewModel.editUserID("user_ID", it.value.toString())
+                            editUserID(it.value.toString())
+
+                          // viewModel.editUserID("user_ID", it.value.toString())
                             println("signInButtonClicked ${it.value}")
                             val action = R.id.action_loginPageFragment_to_signInPageFragment
                             Navigation.findNavController(binding.root).navigate(action)
@@ -118,6 +125,18 @@ class LoginPageFragment : Fragment() {
 
     }
 
+
+    fun editUserID(userID: String){
+     //   SharedPreferencesService("user_ID",).editStringFromSP(userID) //TODO
+        getUserID()
+    }
+    fun getUserID(){
+      val user_id=SharedPreferencesService(
+            "user_ID",
+          context as MainActivity
+        ).getStringFromSP() //TODO ASK ABOUT CONTEXTS
+        println("ekstra ${user_id}")
+    }
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

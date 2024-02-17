@@ -13,6 +13,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import com.ebraratabay.aeskgo.databinding.FragmentSignInPageBinding
 import com.ebraratabay.aeskgo.enums.AuthResults
 import com.ebraratabay.aeskgo.models.FirebaseStoreUser
+import com.ebraratabay.aeskgo.services.SharedPreferencesService
 import com.ebraratabay.aeskgo.viewmodels.SignInPageViewModel
 import com.ebraratabay.aeskgo.views.activities.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,6 +37,7 @@ class SignInPageFragment : Fragment() {
         val view = binding.root
         binding.continueButton.setOnClickListener {
             continueButtonClicked()
+
         }
         return view
     }
@@ -44,12 +46,14 @@ class SignInPageFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(SignInPageViewModel::class.java)
 
+
     }
 
     fun continueButtonClicked() {
         val user = getUserFromEditText()
-
-        viewModel.continueButtonClicked(user)
+        val userID = getUserID()
+        print("continue button ${userID}")
+        viewModel.continueButtonClicked(user, userID)
         viewLifecycleOwner.lifecycleScope.launch {
             viewLifecycleOwner.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 viewModel.storeState.collect {
@@ -59,9 +63,11 @@ class SignInPageFragment : Fragment() {
                             var intent = Intent(context, MainActivity::class.java)
                             startActivity(intent)
                         }
+
                         is AuthResults.Failure -> {
 
                         }
+
                         is AuthResults.Loading -> {
 
                         }
@@ -69,14 +75,19 @@ class SignInPageFragment : Fragment() {
                 }
             }
         }
+    }
 
-
+    fun getUserID(): String {
+        return SharedPreferencesService(
+            "user_ID",
+            context as MainActivity
+        ).getStringFromSP() //TODO ASK ABOUT CONTEXTS
     }
 
     fun getUserFromEditText(): FirebaseStoreUser {
         val name = binding.userName.text.toString()
         val surname = binding.userSurname.text.toString()
-        val phoneNumber = binding.userPhoneNumber.toString()
+        val phoneNumber = binding.userPhoneNumber.text.toString()
         return FirebaseStoreUser(name, surname, phoneNumber)
     }
 
