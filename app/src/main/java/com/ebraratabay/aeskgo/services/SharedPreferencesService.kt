@@ -5,9 +5,9 @@ import android.content.Context
 import android.content.SharedPreferences
 
 
-class SharedPreferencesService(val dataKey: String, val cntxt: Context) {
+class SharedPreferencesService(val dataKey: String, val context: Context) {
 
-    var sharedPreferences: SharedPreferences = cntxt.getSharedPreferences(dataKey, Context.MODE_PRIVATE)
+    var sharedPreferences: SharedPreferences = context.getSharedPreferences(dataKey, Context.MODE_PRIVATE)
 
 
     fun getStringFromSP(): String {
@@ -18,8 +18,7 @@ class SharedPreferencesService(val dataKey: String, val cntxt: Context) {
     }
 
     fun editStringFromSP(stringData: String) {
-
-        sharedPreferences.edit().putString(dataKey, stringData)
+        sharedPreferences.edit().putString(dataKey, stringData).apply()
     }
 
 

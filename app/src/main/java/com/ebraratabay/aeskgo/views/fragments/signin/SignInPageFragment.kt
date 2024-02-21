@@ -78,10 +78,12 @@ class SignInPageFragment : Fragment() {
     }
 
     fun getUserID(): String {
-        return SharedPreferencesService(
+        val user_id=SharedPreferencesService(
             "user_ID",
-            context as MainActivity
-        ).getStringFromSP() //TODO ASK ABOUT CONTEXTS
+            requireContext()
+        ).getStringFromSP()
+        println("ekstra ${user_id}")
+        return user_id
     }
 
     fun getUserFromEditText(): FirebaseStoreUser {

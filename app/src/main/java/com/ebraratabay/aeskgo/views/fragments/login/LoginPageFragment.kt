@@ -127,16 +127,10 @@ class LoginPageFragment : Fragment() {
 
 
     fun editUserID(userID: String){
-     //   SharedPreferencesService("user_ID",).editStringFromSP(userID) //TODO
-        getUserID()
+        SharedPreferencesService("user_ID", requireContext()).editStringFromSP(userID)
+
     }
-    fun getUserID(){
-      val user_id=SharedPreferencesService(
-            "user_ID",
-          context as MainActivity
-        ).getStringFromSP() //TODO ASK ABOUT CONTEXTS
-        println("ekstra ${user_id}")
-    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
