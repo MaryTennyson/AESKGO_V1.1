@@ -6,6 +6,7 @@ import com.ebraratabay.aeskgo.models.FirebaseStoreUser
 import com.ebraratabay.aeskgo.models.Vehicle
 import com.google.firebase.FirebaseException
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.toObject
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.tasks.await
@@ -30,7 +31,6 @@ class FirebaseCloudStore @Inject constructor(val firestore: FirebaseFirestore) {
     }
 
     fun getUser(userID: String): Flow<AuthResults> = flow {
-
         try {
             val user = firestore.collection("Users").document(userID).get().await()
             if (user != null) {
@@ -46,18 +46,15 @@ class FirebaseCloudStore @Inject constructor(val firestore: FirebaseFirestore) {
     }
 
     fun getVehicles(): Flow<AuthResults> = flow {
-
         try {
-            val vehicles = firestore.collection("Users").get()
-            if (vehicles != null) {
-                for (vehicle in vehicles.result) {
-                    val vehicle = vehicle.toObject(Vehicle::class.java)
-                    vehicleList.add(vehicle)
-                }
-                emit(AuthResults.Success(vehicleList))
-            } else {
-                emit(AuthResults.Failure(Exception("Vehicles have not found")))
+           firestore.collection("Vehicles").get().addOnSuccessListener {
+                vehicles->for (vehicle in vehicles) {
+                    println("araç: ${vehicle}")
+               val vehicle = vehicle.toObject<Vehicle>()
+               vehicleList.add(vehicle)
+           }
             }
+            emit(AuthResults.Success(vehicleList))
 
         } catch (e: FirebaseException) {
             emit(AuthResults.Failure(e))

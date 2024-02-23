@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.ebraratabay.aeskgo.R
 import com.ebraratabay.aeskgo.databinding.VehicleCardBinding
 import com.ebraratabay.aeskgo.models.Vehicle
 import com.ebraratabay.aeskgo.views.activities.MapsActivity
@@ -25,7 +26,10 @@ val binding= VehicleCardBinding.inflate(LayoutInflater.from(parent.context),pare
        holder.binding.titleTextView.text= vehicleList.get(position).title
         holder.binding.descriptionTextView.text=vehicleList.get(position).description
         holder.binding.continueTextView.text= "Devam ediniz"
-        holder.binding.imageCardView.setImageResource(vehicleList.get(position).imageID)
+        if(vehicleList.get(position).imageID==true){
+            holder.binding.imageCardView.setImageResource(R.drawable.eletra)
+        }
+
 
         holder.itemView.setOnClickListener {
             val intent= Intent(holder.itemView.context,MapsActivity::class.java)

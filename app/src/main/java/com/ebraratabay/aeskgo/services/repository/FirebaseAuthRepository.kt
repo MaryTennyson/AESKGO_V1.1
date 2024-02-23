@@ -9,16 +9,21 @@ import javax.inject.Inject
 class FirebaseAuthRepository @Inject constructor(
     val firebaseAuthService: FirebaseAuthService
 ) {
-    suspend fun signUpWithEmailAndPassword(email: String, password: String): Flow<AuthResults> {
+     fun signUpWithEmailAndPassword(email: String, password: String): Flow<AuthResults> {
         return firebaseAuthService.createNewUser(email, password)
     }
 
 
-    suspend fun signInWithEmailAndPassword(
+     fun signInWithEmailAndPassword(
         email: String,
         password: String
     ): Flow<AuthResults> {
         return firebaseAuthService.signInUser(email, password)
+    }
+
+    fun isUserExist():Boolean{
+        return firebaseAuthService.currentUser()
+
     }
 
 

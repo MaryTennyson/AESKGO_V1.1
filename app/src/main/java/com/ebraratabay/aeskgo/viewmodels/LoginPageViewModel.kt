@@ -24,7 +24,7 @@ class LoginPageViewModel @Inject constructor(
 
     fun signInUser(user: FirebaseAuthUser) {
         _authState.value = AuthResults.Loading
-        signInUser(user)
+        signInButton(user)
     }
 
     fun signUpUser(user: FirebaseAuthUser) {
@@ -32,7 +32,12 @@ class LoginPageViewModel @Inject constructor(
         signUpButton(user)
     }
 
-    fun signInButton(user: FirebaseAuthUser) {
+    fun isUserExist():Boolean{
+      return  firebaseAuthRepo.isUserExist()
+    }
+
+
+    private fun signInButton(user: FirebaseAuthUser) {
         viewModelScope.launch {
             firebaseAuthRepo.signInWithEmailAndPassword(user.email, user.password).collect {
                 if (it != null) {
@@ -42,7 +47,7 @@ class LoginPageViewModel @Inject constructor(
         }
     }
 
-    fun signUpButton(user: FirebaseAuthUser) {
+    private fun signUpButton(user: FirebaseAuthUser) {
         viewModelScope.launch {
             firebaseAuthRepo.signUpWithEmailAndPassword(user.email, user.password).collect() {
                 if (it != null) {
